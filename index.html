@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit Card Generator</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <button id="menuButton">☰</button>
+        <h1 class="header-title">Credit Card Generator</h1>
+        <button class="dark-mode-toggle" id="darkModeToggle">🌙</button>
+    </header>
+
+    <div class="nav-drawer" id="navDrawer">
+        <button class="close-button" id="closeDrawerButton">✕</button>
+        <ul>
+            <li data-page="generator">Generator</li>
+            <li data-page="about">About</li>
+        </ul>
+    </div>
+
+    <main>
+        <div class="page-content active" id="generator">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Credit Card Settings</h2>
+                </div>
+                <div class="collapse-content">
+                    <div class="form-group">
+                        <label for="countrySelect">Country:</label>
+                        <select id="countrySelect" class="text-field">
+                            <option value="us">United States</option>
+                            <option value="uk">United Kingdom</option>
+                            <option value="ca">Canada</option>
+                            <option value="au">Australia</option>
+                            <option value="de">Germany</option>
+                            <option value="fr">France</option>
+                            <option value="jp">Japan</option>
+                            <option value="cn">China</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="cardIssuer">Card Issuer:</label>
+                        <select id="cardIssuer" class="text-field">
+                            <option value="visa">Visa</option>
+                            <option value="mastercard">MasterCard</option>
+                            <option value="amex">American Express</option>
+                            <option value="discover">Discover</option>
+                            <option value="jcb">JCB</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="cardColor">Card Color:</label>
+                        <input type="color" id="cardColor" class="text-field" value="#4285F4">
+                    </div>
+                    <button id="generateButton" class="button">Generate Card</button>
+                </div>
+            </div>
+            
+            <div class="card" id="resultCard" style="display: none;">
+                <div class="card-header">
+                    <h2>Generated Card</h2>
+                </div>
+                <div class="collapse-content">
+                    <div class="credit-card-preview">
+                        <div class="credit-card-container">
+                            <div class="credit-card front" id="cardFront">
+                                <div class="card-chip"></div>
+                                <div class="card-issuer" id="cardIssuerLogo"></div>
+                                <div class="card-number" id="displayCardNumber">0000 0000 0000 0000</div>
+                                <div class="card-info">
+                                    <div class="card-holder">
+                                        <label>CARD HOLDER</label>
+                                        <div id="displayCardHolder">FULL NAME</div>
+                                    </div>
+                                    <div class="card-expiry">
+                                        <label>EXPIRES</label>
+                                        <div id="displayExpiry">MM/YY</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="credit-card back" id="cardBack">
+                                <div class="card-magnetic-strip"></div>
+                                <div class="card-signature">
+                                    <div class="signature-strip">
+                                        <div id="displaySignature"></div>
+                                    </div>
+                                    <div class="cvv">
+                                        <label>CVV</label>
+                                        <div id="displayCVV">000</div>
+                                    </div>
+                                </div>
+                                <div class="card-issuer-back" id="cardIssuerLogoBack"></div>
+                            </div>
+                        </div>
+                        <button id="flipCardButton" class="button">Flip Card</button>
+                    </div>
+                    
+                    <div class="card-details">
+                        <h3>Card Details</h3>
+                        <div class="detail-item">
+                            <label>Name:</label>
+                            <span id="displayName"></span>
+                        </div>
+                        <div class="detail-item">
+                            <label>Address:</label>
+                            <span id="displayAddress"></span>
+                        </div>
+                        <div class="detail-item">
+                            <label>City:</label>
+                            <span id="displayCity"></span>
+                        </div>
+                        <div class="detail-item">
+                            <label>Postal/Zip Code:</label>
+                            <span id="displayPostal"></span>
+                        </div>
+                        <div class="detail-item">
+                            <label>Country:</label>
+                            <span id="displayCountry"></span>
+                        </div>
+                        <div class="detail-item">
+                            <label>Card Number:</label>
+                            <span id="displayNumber"></span>
+                        </div>
+                        <div class="detail-item">
+                            <label>CVV:</label>
+                            <span id="displayDetailCVV"></span>
+                        </div>
+                        <div class="detail-item">
+                            <label>Expiry Date:</label>
+                            <span id="displayDetailExpiry"></span>
+                        </div>
+                        <div class="detail-item">
+                            <label>Issuer:</label>
+                            <span id="displayIssuer"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="page-content" id="about">
+            <div class="card">
+                <div class="card-header">
+                    <h2>About</h2>
+                </div>
+                <div class="collapse-content">
+                    <p class="about-info">
+                        This credit card generator creates virtual credit card information for testing purposes only.
+                        The generated information is NOT real and should NOT be used for any fraudulent activities.
+                    </p>
+                    <p class="about-info">
+                        All generated card numbers follow the Luhn algorithm which is used to validate credit card numbers,
+                        but they are not connected to real accounts and cannot be used for actual transactions.
+                    </p>
+                    <p class="about-info">
+                        This tool is intended for developers, designers, and testers who need dummy credit card data.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html> 
