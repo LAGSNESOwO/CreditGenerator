@@ -61,6 +61,83 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // 复制按钮功能
+    const copyButtons = document.querySelectorAll('.copy-button');
+    copyButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const targetId = this.getAttribute('data-target');
+            const textToCopy = document.getElementById(targetId).textContent;
+            
+            // 创建临时文本区域用于复制
+            const textarea = document.createElement('textarea');
+            textarea.value = textToCopy;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            
+            // 显示复制状态
+            const originalText = this.textContent;
+            this.textContent = 'Copied!';
+            this.classList.add('copied');
+            
+            // 2秒后恢复原始状态
+            setTimeout(() => {
+                this.textContent = originalText;
+                this.classList.remove('copied');
+            }, 2000);
+        });
+    });
+    
+    // 保存卡片图像功能
+    const saveCardButton = document.getElementById('saveCardButton');
+    if (saveCardButton) {
+        saveCardButton.addEventListener('click', function() {
+            // 判断是否要保存正面或背面
+            const isFlipped = cardContainer.classList.contains('flipped');
+            const element = isFlipped ? document.getElementById('cardBack') : document.getElementById('cardFront');
+            
+            // 使用html2canvas库转换为图像
+            html2canvas(element, {
+                backgroundColor: null,
+                scale: 2, // 提高分辨率
+                logging: false,
+                allowTaint: true,
+                useCORS: true
+            }).then(canvas => {
+                // 转换为图像并下载
+                const image = canvas.toDataURL('image/png');
+                const a = document.createElement('a');
+                a.setAttribute('download', `credit-card-${isFlipped ? 'back' : 'front'}.png`);
+                a.setAttribute('href', image);
+                a.click();
+                
+                // 显示提示信息
+                showToast('Card image saved successfully!');
+            });
+        });
+    }
+    
+    // 创建提示信息显示功能
+    function showToast(message) {
+        // 检查是否已存在toast
+        let toast = document.querySelector('.toast-message');
+        if (!toast) {
+            toast = document.createElement('div');
+            toast.className = 'toast-message';
+            document.body.appendChild(toast);
+        }
+        
+        // 设置消息并显示
+        toast.textContent = message;
+        toast.classList.add('show');
+        
+        // 3秒后隐藏
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 3000);
+    }
+    
     // 卡片颜色自定义
     const cardColorInput = document.getElementById('cardColor');
     const cardFront = document.getElementById('cardFront');

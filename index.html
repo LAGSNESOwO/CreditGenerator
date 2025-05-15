@@ -95,7 +95,10 @@
                                 <div class="card-issuer-back" id="cardIssuerLogoBack"></div>
                             </div>
                         </div>
-                        <button id="flipCardButton" class="button">Flip Card</button>
+                        <div class="card-buttons">
+                            <button id="flipCardButton" class="button">Flip Card</button>
+                            <button id="saveCardButton" class="button">Save Card Image</button>
+                        </div>
                     </div>
                     
                     <div class="card-details">
@@ -103,38 +106,47 @@
                         <div class="detail-item">
                             <label>Name:</label>
                             <span id="displayName"></span>
+                            <button class="copy-button" data-target="displayName">Copy</button>
                         </div>
                         <div class="detail-item">
                             <label>Address:</label>
                             <span id="displayAddress"></span>
+                            <button class="copy-button" data-target="displayAddress">Copy</button>
                         </div>
                         <div class="detail-item">
                             <label>City:</label>
                             <span id="displayCity"></span>
+                            <button class="copy-button" data-target="displayCity">Copy</button>
                         </div>
                         <div class="detail-item">
                             <label>Postal/Zip Code:</label>
                             <span id="displayPostal"></span>
+                            <button class="copy-button" data-target="displayPostal">Copy</button>
                         </div>
                         <div class="detail-item">
                             <label>Country:</label>
                             <span id="displayCountry"></span>
+                            <button class="copy-button" data-target="displayCountry">Copy</button>
                         </div>
                         <div class="detail-item">
                             <label>Card Number:</label>
                             <span id="displayNumber"></span>
+                            <button class="copy-button" data-target="displayNumber">Copy</button>
                         </div>
                         <div class="detail-item">
                             <label>CVV:</label>
                             <span id="displayDetailCVV"></span>
+                            <button class="copy-button" data-target="displayDetailCVV">Copy</button>
                         </div>
                         <div class="detail-item">
                             <label>Expiry Date:</label>
                             <span id="displayDetailExpiry"></span>
+                            <button class="copy-button" data-target="displayDetailExpiry">Copy</button>
                         </div>
                         <div class="detail-item">
                             <label>Issuer:</label>
                             <span id="displayIssuer"></span>
+                            <button class="copy-button" data-target="displayIssuer">Copy</button>
                         </div>
                     </div>
                 </div>
@@ -173,6 +185,7 @@
         </div>
     </main>
 
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html> 

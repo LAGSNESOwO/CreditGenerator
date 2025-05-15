@@ -343,11 +343,61 @@ main {
 .detail-item {
   margin-bottom: 10px;
   display: flex;
+  align-items: center;
 }
 .detail-item label {
   font-weight: bold;
   margin-right: 10px;
   min-width: 120px;
+}
+.detail-item span {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+/* 复制按钮 */
+.copy-button {
+  background-color: var(--dynamic-color-secondary);
+  color: var(--dynamic-color-on-secondary);
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.copy-button:hover {
+  background-color: var(--dynamic-color-primary);
+  color: var(--dynamic-color-on-primary);
+}
+.copy-button.copied {
+  background-color: #4CAF50;
+  color: white;
+}
+
+/* 卡片按钮区域 */
+.card-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* 保存成功提示 */
+.toast-message {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 4px;
+  z-index: 2000;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.toast-message.show {
+  opacity: 1;
 }
 
 /* 卡片标题和关闭按钮 */
